@@ -9,7 +9,8 @@ on:
 jobs:
   build:
     name: Build (macOS)
-    runs-on: macos-14
+    # swift-asn1 1.7+ requires Swift tools 6.1 (Xcode 16.3+).
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v7
 
