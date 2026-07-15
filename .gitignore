@@ -1,0 +1,13 @@
+.build/
+.swiftpm/
+*.xcodeproj
+.DS_Store
+
+# Build output
+*.dylib
+
+# Secure Enclave key blobs and CSR/cert artifacts from local testing
+*.sekey
+*.csr
+*.crt
+*.crt.pem

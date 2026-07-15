@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build (macOS)
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: swift build (debug)
+        run: swift build
+
+      - name: Check exported PKCS#11 symbols (release)
+        run: make symbols
+
+# Note: the Secure Enclave signing path (create/csr/dylib C_Sign) is not
+# exercised here. It requires a real device key and, depending on access
+# control flags, an interactive session — see the integration/ directory
+# for the end-to-end test run manually against real hardware.
